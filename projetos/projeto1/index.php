@@ -12,10 +12,13 @@ while (true) {
         6 para excluir um agendamento ou 0 para sair: ");
 
     if ($options == 1) {
+
         $nameClient = readline("Digite o nome do cliente: ");
         $product = readline("Digite o produto: ");
         $date = readline("Digite a data (dd/mm/yyyy): ");
         $price = readline("Digite o preço: ");
+
+        addSchedule($schedules, $nameClient, $product, $date, $price);
 
         $schedules[] = [
             'id' => uniqid(),
@@ -23,7 +26,7 @@ while (true) {
             'product' => $product,
             'date' => $date,
             'price' => (float) $price
-        ];
+        ]; 
 
         echo "Agendamento criado com sucesso! \n";
 
@@ -40,7 +43,9 @@ while (true) {
         echo findScheduleByClient($schedules, $nameClient);
         
     } elseif ($options == 5) {
-        // Lógica para editar um agendamento
+        $id = readline("Digite o ID do agendamento para editar: ");
+        editSchedule($schedules, $id);
+        
     } elseif ($options == 6) {
         // Lógica para excluir um agendamento
     } elseif ($options == 0) {
@@ -51,12 +56,12 @@ while (true) {
     }
 }
 
-echo "ID: " . $schedule['id'] . "\n";
-echo "Cliente: " . $schedule['nameClient'] . "\n";
-echo "Produto: " . $schedule['product'] . "\n";
-echo "Data: " . $schedule['date'] . "\n";
-echo "Preço: R$" . $schedule['price'] . "\n";
-echo "-------------------------\n";
+/* echo "ID: " . $schedules['id'] . "\n";
+echo "Cliente: " . $schedules['nameClient'] . "\n";
+echo "Produto: " . $schedules['product'] . "\n";
+echo "Data: " . $schedules['date'] . "\n";
+echo "Preço: R$" . $schedules['price'] . "\n";
+echo "-------------------------\n"; */
 
 //print_r($schedules);
 
