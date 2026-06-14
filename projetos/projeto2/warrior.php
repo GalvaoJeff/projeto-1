@@ -22,4 +22,19 @@ class Warrior extends Character {
         echo "{$this->name} realizou um ataque poderoso em {$target->name} causando {$damage} de dano. ";
         echo "{$target->name} tem {$target->hp} HP restantes.\n";
     }
+
+    #[Override]
+    public function attack(Character $target) {
+        return parent::attack($target);
+    }
+
+    #[Override]
+    public function defense() {        
+        return parent::defense();
+    }
+
+    #[Override]    
+    public function rest() {
+        return parent::rest();
+    }
 }
