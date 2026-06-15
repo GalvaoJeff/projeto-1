@@ -2,7 +2,7 @@
 
 class Warrior extends Character {   
     public function __construct(string $name) {
-        parent::__construct($name, 120, 15, 10, 120);
+        parent::__construct($name, 100, 15, 10, 120);
     }
 
     public function strikePower(): int {
