@@ -12,6 +12,9 @@ class Actions {
             case 3:
                 $actor->rest();
                 break;
+            case 4:
+                $actor->powerStrike($target);
+                break;
             default:
                 echo "Ação inválida! Tente novamente.\n";
                 return false;

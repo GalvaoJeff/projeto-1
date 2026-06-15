@@ -16,6 +16,26 @@ abstract class Character {
         $this->stamina = $stamina;
     }
 
+    public function getName(): string {
+        return $this->name;
+    }
+
+    public function getHP(): int {
+        return $this->hp;
+    }
+
+    public function getAttackPower(): int {
+        return $this->attackPower;
+    }
+
+    public function getDefensePower(): int {
+        return $this->defensePower;
+    }
+
+    public function getStamina(): int {
+        return $this->stamina;
+    }
+
     public function attack(Character $target) {
         if ($this->stamina < 10) {
             echo "{$this->name} pouca stamina para realizar o ataque!\n";
@@ -52,6 +72,7 @@ abstract class Character {
     }
 
     abstract public function strikePower(): int;
+    abstract public function powerStrike(Character $target);
 }
 
 
