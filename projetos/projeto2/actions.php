@@ -7,6 +7,7 @@ class Actions {
         2 => ["label" => "Defender",        "method" => "defense",     "needsTarget" => false],
         3 => ["label" => "Descansar",       "method" => "rest",        "needsTarget" => false],
         4 => ["label" => "Ataque Poderoso", "method" => "powerStrike", "needsTarget" => true],
+        5 => ["label" => "Efeito Especial", "method" => "special",     "needsTarget" => true],
     ];
 
     public static function getMenu(): string {
@@ -41,6 +42,11 @@ class Actions {
             $actor->$method($target);
         } else {
             $actor->$method();
+        }
+
+        if ($actor->getStamina() < 0) {
+            echo "{$actor->getName()} estamina insuficiente para esta ação! Escolha outra ação ou descanse para recuperar stamina.\n";
+            $actor->rest();
         }
 
         return true;
