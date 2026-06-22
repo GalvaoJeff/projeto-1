@@ -22,17 +22,25 @@ echo "1. Guerreiro - " . $warrior->getName() . "\n" . $warrior->getHP() . " HP\n
 $warrior->getAttackPower() . " Poder de Ataque\n" . 
 $warrior->getDefensePower() . " Poder de Defesa\n" . 
 $warrior->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "2. Mago - " . $wizard->getName() . "\n" . $wizard->getHP() . " HP\n" . 
 $wizard->getAttackPower() . " Poder de Ataque\n" . 
 $wizard->getDefensePower() . " Poder de Defesa\n" . $wizard->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "3. Arqueiro - " . $archer->getName() . "\n" . $archer->getHP() . " HP\n" . 
 $archer->getAttackPower() . " Poder de Ataque\n" . 
 $archer->getDefensePower() . " Poder de Defesa\n" . 
 $archer->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "4. Berseker - " . $berseker->getName() . "\n" . $berseker->getHP() . " HP\n" . 
 $berseker->getAttackPower() . " Poder de Ataque\n" . 
 $berseker->getDefensePower() . " Poder de Defesa\n" . 
 $berseker->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 $player1 = readline("Digite o número do personagem: ");
 
 
@@ -57,17 +65,25 @@ echo "1. Guerreiro - " . $warrior->getName() . "\n" . $warrior->getHP() . " HP\n
 $warrior->getAttackPower() . " Poder de Ataque\n" . 
 $warrior->getDefensePower() . " Poder de Defesa\n" . 
 $warrior->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "2. Mago - " . $wizard->getName() . "\n" . $wizard->getHP() . " HP\n" . 
 $wizard->getAttackPower() . " Poder de Ataque\n" . 
 $wizard->getDefensePower() . " Poder de Defesa\n" . $wizard->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "3. Arqueiro - " . $archer->getName() . "\n" . $archer->getHP() . " HP\n" . 
 $archer->getAttackPower() . " Poder de Ataque\n" . 
 $archer->getDefensePower() . " Poder de Defesa\n" . 
 $archer->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 echo "4. Berseker - " . $berseker->getName() . "\n" . $berseker->getHP() . " HP\n" . 
 $berseker->getAttackPower() . " Poder de Ataque\n" . 
 $berseker->getDefensePower() . " Poder de Defesa\n" . 
 $berseker->getStamina() . " Stamina\n";
+echo "|--------------------------------------------------|\n";
+echo "\n";
 $player2 = readline("Digite o número do personagem: ");
 
 if ($player2 == 1) {

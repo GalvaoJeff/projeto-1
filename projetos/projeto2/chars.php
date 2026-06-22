@@ -43,7 +43,7 @@ abstract class Character {
     public function attack(Character $target) {
         if ($this->stamina < 10) {
             echo "{$this->name} pouca stamina para realizar o ataque!\n";
-            return;
+            return 0;
         }
 
         $damage = max(0, $this->attackPower - $target->defensePower);
@@ -57,7 +57,7 @@ abstract class Character {
     public function defense() {
         if ($this->stamina < 5) {
             echo "{$this->name} pouca stamina para se defender!\n";
-            return;
+            return 0;
         }
 
         $this->defensePower += 5;

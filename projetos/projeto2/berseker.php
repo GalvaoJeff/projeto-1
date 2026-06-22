@@ -23,20 +23,20 @@ class Berseker extends Character {
         echo "{$this->name} realizou um ataque especial em {$target->name} causando {$damage} de dano. ";
         echo "{$target->name} tem {$target->hp} HP restantes.\n";
 
-        $target->applyBloodlust(self::BLOODLUST_TURNS, self::BLOODLUST_DAMAGE);
+        $target->applyBloodlust(self::BLOODLUST_DAMAGE, self::BLOODLUST_TURNS);
 
         return $damage;
     }
 
     public function powerStrike(Character $target) {
-        if ($this->stamina < 25) {
+        if ($this->stamina < 35) {
             echo "{$this->name} pouca stamina para realizar o ataque poderoso!\n";
-            return;
+            return 0;
         }
 
         $damage = max(0, ($this->attackPower * 2) - $target->defensePower);
         $target->hp -= $damage;
-        $this->stamina -= 25;
+        $this->stamina -= 35;
 
         echo "{$this->name} realizou um ataque poderoso em {$target->name} causando {$damage} de dano. ";
         echo "{$target->name} tem {$target->hp} HP restantes.\n";

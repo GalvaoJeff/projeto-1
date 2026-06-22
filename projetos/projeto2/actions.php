@@ -39,14 +39,15 @@ class Actions {
         echo "\n{$actor->getName()} usou {$selected['label']}!\n";
 
         if ($selected["needsTarget"]) {
-            $actor->$method($target);
+            $result = $actor->$method($target);
         } else {
-            $actor->$method();
+            $result = $actor->$method();
         }
 
-        if ($actor->getStamina() < 0) {
+        if ($result === 0) {
             echo "{$actor->getName()} estamina insuficiente para esta ação! Escolha outra ação ou descanse para recuperar stamina.\n";
-            $actor->rest();
+            return false;
+        
         }
 
         return true;

@@ -30,14 +30,14 @@ class Archer extends Character {
     }
 
     public function powerStrike(Character $target) {
-        if ($this->stamina < 25) {
+        if ($this->stamina < 35) {
             echo "{$this->name} pouca stamina para realizar o ataque poderoso!\n";
-            return;
+            return 0;
         }
 
         $damage = max(0, ($this->attackPower * 2) - $target->defensePower);
         $target->hp -= $damage;
-        $this->stamina -= 25;
+        $this->stamina -= 35;
 
         echo "{$this->name} lançou uma flecha poderosa em {$target->name} causando {$damage} de dano. ";
         echo "{$target->name} tem {$target->hp} HP restantes.\n";
