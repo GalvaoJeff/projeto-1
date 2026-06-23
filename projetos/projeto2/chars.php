@@ -3,9 +3,11 @@
 abstract class Character {
     protected string $name = "";
     protected int $hp = 100;
+    protected int $maxHP = 100;
     protected int $attackPower = 10;
     protected int $defensePower = 5;
     protected int $stamina;
+    protected int $maxStamina = 100;
     protected int $poisonedTurns = 0;
     protected int $poisonDamage = 0;
     protected int $bloodlustTurns = 0;
@@ -15,9 +17,11 @@ abstract class Character {
     int $attackPower, int $defensePower, int $stamina) {
         $this->name = $name;
         $this->hp = $hp;
+        $this->maxHP = $hp;
         $this->attackPower = $attackPower;
         $this->defensePower = $defensePower;
         $this->stamina = $stamina;
+        $this->maxStamina = $stamina;
     }
 
     public function getName(): string {
@@ -121,6 +125,35 @@ abstract class Character {
 
     abstract public function special(?Character $target = null): int;
     abstract public function powerStrike(Character $target);
+
+    // Barra de HP
+    public function renderHpBar(int $length = 20): string {
+        $bar = $this->renderBar($this->hp, $this->maxHP, $length);
+        return "{$this->name} HP: {$bar} {$this->hp}/{$this->maxHP}";
+    }
+
+    // Barra de Stamina
+    public function renderStaminaBar(int $length = 20): string {
+        $bar = $this->renderBar($this->stamina, $this->maxStamina, $length);
+        return "{$this->name} Stamina: {$bar} {$this->stamina}/{$this->maxStamina}";
+    }
+
+    private function renderBar(int $current, int $max, int $length = 20): string {
+    $current = max(0, $current);
+    $percent = $max > 0 ? $current / $max : 0;
+    $filled  = (int) round($percent * $length);
+    $empty   = $length - $filled;
+
+    // Cor verde se > 50%, amarelo se > 20%, vermelho se <= 20%
+    $color = match(true) {
+        $percent > 0.5  => "\033[32m", // Verde
+        $percent > 0.2  => "\033[33m", // Amarelo
+        default         => "\033[31m", // Vermelho
+    };
+    $reset = "\033[0m";
+
+    return "[{$color}" . str_repeat("#", $filled) . $reset . str_repeat(" ", $empty) . "]";
+}
 }
 
 

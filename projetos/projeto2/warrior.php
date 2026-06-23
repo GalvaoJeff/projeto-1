@@ -4,6 +4,7 @@ class Warrior extends Character {
     
     const SPECIAL_DAMAGE = 5;
     const STAMINA_COST = 15;
+    const DEFENSE_BOOST = 5;
 
     public function __construct(string $name) {
         parent::__construct($name, 100, 15, 10, 120);
@@ -18,11 +19,15 @@ class Warrior extends Character {
         $damage = max(0, ($this->attackPower + self::SPECIAL_DAMAGE) - $target->defensePower);
         $target->hp -= $damage;
         $this->stamina -= self::STAMINA_COST;
+        $defenseBoost = self::DEFENSE_BOOST;
+        $this->defensePower += $defenseBoost;
 
-        echo "{$this->name} realizou o ataque especial em {$target->name} causando {$damage} de dano. ";
+        echo "{$this->name} Utilizou a Andúril em {$target->name} causando {$damage} de dano,
+        e aumentou sua defesa em {$defenseBoost}. ";
         echo "{$target->name} tem {$target->hp} HP restantes.\n";
 
         return $this->attackPower;
+        return $defenseBoost;
     }
 
     public function powerStrike(Character $target) {

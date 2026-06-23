@@ -8,13 +8,14 @@ require_once 'wizard.php';
 require_once 'actions.php';
 require_once 'archer.php';
 require_once 'berseker.php';
+require_once 'sounds.php';
 
 $warrior = new Warrior("Aragorn");
 $wizard = new Wizard("Gandalf");
 $archer = new Archer("Legolas");
 $berseker = new Berseker("Ork");
 
-
+Sounds::playSound("intro.mp3");
 readline("Pressione Enter para iniciar o jogo...");
 echo "\n";
 echo "Jogador 1: Escolha um personagem para jogar:\n";
@@ -102,6 +103,8 @@ if ($player2 == 1) {
 readline("Pressione Enter para iniciar a batalha...");
 system("clear");
 
+Sounds::playSound("battle.mp3", true);
+
 $turn = 1;
 
 while ($player1Character->getHP() > 0 && $player2Character->getHP() > 0) {
@@ -109,8 +112,10 @@ while ($player1Character->getHP() > 0 && $player2Character->getHP() > 0) {
     echo "\n=============================\n";
     echo "         TURNO $turn\n";
     echo "=============================\n";
-    echo "{$player1Character->getName()} HP: {$player1Character->getHP()}\n";
-    echo "{$player2Character->getName()} HP: {$player2Character->getHP()}\n";
+    echo "{$player1Character->getName()} HP: {$player1Character->renderHpBar()}\n";
+    echo "{$player1Character->getName()} Stamina: {$player1Character->renderStaminaBar()}\n";
+    echo "{$player2Character->getName()} HP: {$player2Character->renderHpBar()}\n";
+    echo "{$player2Character->getName()} Stamina: {$player2Character->renderStaminaBar()}\n";
     echo "=============================\n";
 
     $player1Character->processPoison();
@@ -140,6 +145,8 @@ while ($player1Character->getHP() > 0 && $player2Character->getHP() > 0) {
     $turn++;
 }
 
+Sounds::playSound("final.mp3", false);
+
 // ---- Fim do jogo ----
 echo "\n=============================\n";
 echo "         FIM DE JOGO!\n";
@@ -155,8 +162,10 @@ echo match(true) {
 };
 
 echo "\nHP Final:\n";
-echo "{$player1Character->getName()}: {$player1Character->getHP()} HP\n";
-echo "{$player2Character->getName()}: {$player2Character->getHP()} HP\n";
+echo "{$player1Character->getName()}: {$player1Character->renderHpBar()} HP\n";
+echo "{$player1Character->getName()}: {$player1Character->renderStaminaBar()} Stamina\n";
+echo "{$player2Character->getName()}: {$player2Character->renderHpBar()} HP\n";
+echo "{$player2Character->getName()}: {$player2Character->renderStaminaBar()} Stamina\n";
 echo "Total de turnos: $turn\n";
 
 
